@@ -1,0 +1,23 @@
+.facebook-show{ "ng-controller" => "facebookCtrl"}
+
+  %h2.hello Helloł, {{ user.first_name }}!
+
+  .application.panel.panel-default
+    .info.panel-heading
+      Please wait while application collects YouTube videos from your wall posts.
+    .result.panel-body{ 'wt-spinner' => 'large' }
+      %div{ "ng-switch" => "state" }
+        %p{ "ng-switch-when" => "fetching" }
+          Fetching Videos...
+        %p{ "ng-switch-when" => "posting" }
+          Updating DB...
+        %p{ "ng-switch-when" => "complete" }
+          Done!
+      %p YouTube Videos Retrieved: {{ youtubeIds.length }}
+      %a.continue.btn.btn-primary{ "ng-href" => "http://walltube.herokuapp.com/youtube/{{user.id}}",
+                                   target: '_top',
+                                   "ng-show" => "state == 'complete'",
+                                 }
+        Continue
+
+

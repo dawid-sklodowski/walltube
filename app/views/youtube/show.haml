@@ -1,0 +1,45 @@
+.youtube-show{ "ng-controller" => "youtubeCtrl",
+               "ng-init" => "init(#{ @user.youtube_ids.to_json })",
+             }
+  :javascript
+    window.googleApiClientReady = function() {
+      window.setTimeout(function() {youtubeCtrlGoogleApiReady()}, 1);
+    }
+  = javascript_include_tag 'https://apis.google.com/js/client.js?onload=googleApiClientReady'
+
+  %div{ "ng-switch" => "state" }
+    %h3.hello{ "ng-switch-when" => "processing" } Adding Videos to Youtube, {{ youtubeIds.length }} videos remaining
+    %h3.hello{ "ng-switch-when" => "done" } Congrats! Playlist created
+    %h3.hello{ "ng-switch-default" => true } Helloł, You have {{ youtubeIds.length }} YouTube Videos from Your Facebook
+
+  .application.panel.panel-default{ "wt-spinner" => "large" }
+    .panel-heading
+      Create Youtube Playlist
+    .panel-body
+      .pre-auth{ "ng-if" => "authorized == 'no'" }
+        %p
+          This application requires access to your YouTube account.
+          Please
+          %a{ href: "#", "ng-click" => 'auth()' } authorize
+          to continue.
+
+        %a.authorize.btn.btn-primary{ "ng-href" => "#",
+                                      "ng-click" => "auth()",
+                                    }
+          Authorize
+      .post-auth{ "ng-if" => "authorized == 'yes' && state != 'done'" }
+
+        %p Select name for your new playlist.
+        %p
+          %p
+            %laber{ for: 'playlist_name' } Playlist name:
+            %input{ id: 'playlist_name', name: 'name', "ng-model" => "playlist.name" }
+          %p
+            %button.btn.btn-primary{ "ng-disabled" => "!playlist.name", "ng-click" => "createPlaylist()" } Create Playlist
+      %div{ "ng-if" => "state == 'done'"}
+        %h4 Done!
+        %p
+          %a.btn.btn-primary{ "ng-href" => "https://www.youtube.com/playlist?list={{ playlist.id }}" }
+            Your Playlist
+
+#status
