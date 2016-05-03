@@ -13,7 +13,6 @@ class HomeController < ApplicationController
       fb_user_id: params[:user][:id],
       fb_user_first_name: params[:user][:first_name],
       fb_user_last_name: params[:user][:last_name],
-      email: params[:user][:email],
       youtube_ids: params[:youtubeIds],
     }
 

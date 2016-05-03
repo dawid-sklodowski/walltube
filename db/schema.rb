@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20160503212559) do
     t.json     "youtube_ids"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
   end
 
 end
