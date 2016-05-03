@@ -42,6 +42,9 @@ gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem 'pry'
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
