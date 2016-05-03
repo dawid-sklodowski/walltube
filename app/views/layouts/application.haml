@@ -12,11 +12,21 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
   %body{ 'ng-app' => 'wallTube' }
-    .container
-      .logo
-        %span.left> Wall
-        %span.right> Tube
-      .description
-        Create YouTube playlist from Videos posted on Your FaceBook wall.
+    %nav.navbar.navbar-default
+      .container
+        .logo.navbar-left
+          %a{ href: '/'}
+            %span.left> Wall
+            %span.right> Tube
+          %span.slogan Create YouTube playlist from Your Facebook.
+        %ul.nav.navbar-nav.navbar-right
+          %li.active
+            %a{ href: '/'} Home
+          %li
+            %a{ href: 'https://apps.facebook.com/wall-tube/'} Facebook App
+          %li
+            %a{ href: '/privacy' } Privacy Policy
 
+
+    .container
       = yield

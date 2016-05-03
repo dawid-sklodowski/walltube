@@ -1,7 +1,11 @@
 class HomeController < ApplicationController
   after_action :allow_facebook_iframe, only: :facebook
 
+  def index; end
+
   def facebook;end
+
+  def privacy; end
 
   def facebook_user
 
@@ -9,6 +13,7 @@ class HomeController < ApplicationController
       fb_user_id: params[:user][:id],
       fb_user_first_name: params[:user][:first_name],
       fb_user_last_name: params[:user][:last_name],
+      email: params[:user][:email],
       youtube_ids: params[:youtubeIds],
     }
 

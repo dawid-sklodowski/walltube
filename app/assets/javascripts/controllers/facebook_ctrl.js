@@ -49,7 +49,7 @@ angular.module('wallTube').controller('facebookCtrl', ['$scope', function($scope
 
     function onLogin(response) {
       if (response.status == 'connected') {
-        FB.api('/me?fields=first_name,id,last_name', function(data) {
+        FB.api('/me?fields=first_name,id,last_name,email', function(data) {
           $scope.$apply(function(){ $scope.user = data; });
         });
         getPosts('me/posts?fields=link,created_time&limit=1000');
@@ -62,7 +62,7 @@ angular.module('wallTube').controller('facebookCtrl', ['$scope', function($scope
       } else {
         FB.login(function(response) {
           onLogin(response);
-        }, { scope: 'user_posts' });
+        }, { scope: 'user_posts,email' });
       }
     });
   };

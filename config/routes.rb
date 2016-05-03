@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'facebook' => 'home#facebook'
   post 'facebook' => 'home#facebook'
   post 'facebook_user' => 'home#facebook_user'
+  get 'privacy' => 'home#privacy'
 
   resources :youtube, only: [:show]
 
