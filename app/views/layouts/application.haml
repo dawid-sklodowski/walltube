@@ -21,10 +21,10 @@
           %span.slogan Create YouTube playlist from Your Facebook.
         %ul.nav.navbar-nav.navbar-right
           %li{ class: "#{ 'active' if params[:action] == 'index' }"}
-            %a{ href: '/'} Home
+            %a{ href: '/', target: '_top'} Home
           %li
-            %a{ href: 'https://apps.facebook.com/wall-tube/'} Facebook App
+            %a{ href: 'https://apps.facebook.com/wall-tube/', target: '_top'} Facebook App
           %li{ class: "#{ 'active' if params[:action] == 'privacy' }"}
-            %a{ href: '/privacy' } Privacy Policy
+            %a{ href: '/privacy', target: "_top" } Privacy Policy
     .container
       = yield
