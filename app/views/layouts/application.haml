@@ -22,8 +22,9 @@
         %ul.nav.navbar-nav.navbar-right
           %li{ class: "#{ 'active' if params[:action] == 'index' }"}
             %a{ href: '/', target: '_top'} Home
-          %li
-            %a{ href: 'https://apps.facebook.com/wall-tube/', target: '_top'} Facebook App
+          %li{ class:"#{ 'active' if params[:action] == 'facebook' }" }
+            %a{ href: "#{ params[:action] == 'facebook' ? '#' : 'https://apps.facebook.com/wall-tube/' }", target: '_top'}
+              Facebook App
           %li{ class: "#{ 'active' if params[:action] == 'privacy' }"}
             %a{ href: '/privacy', target: "_top" } Privacy Policy
     .container
